@@ -1,0 +1,7 @@
+Run the following in the terminal from Repo directory
+    python -m unittest
+
+To run a specific module you can use:
+    python -m unittest Tests.[module_name]
+    for example:
+    python -m unittest Tests.TextObjectTests
