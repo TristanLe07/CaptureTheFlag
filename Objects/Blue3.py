@@ -9,5 +9,4 @@ class Blue3(BlueBot):
         self.wait_count = 0
 
     def tick(self):
-
-       pass
+        self.drive_forward(Globals.FAST)
