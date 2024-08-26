@@ -21,8 +21,8 @@ class Red2(RedBot):
                     self.turn_towards(bot.x, bot.y, Globals.FAST)
                     break
                 else:
-                    self.turn_towards(Globals.blue_flag.x, Globals.blue_flag.y, Globals.FAST)
-                    self.drive_forward(Globals.FAST)
+#                    self.turn_towards(Globals.blue_flag.x, Globals.blue_flag.y, Globals.FAST)
+#                    self.drive_forward(Globals.FAST)
                     pass
         elif self.curr_state == STATE.FREE_JAILED_BOT:
             self.drive_forward(Globals.FAST)

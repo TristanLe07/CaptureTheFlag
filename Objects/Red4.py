@@ -23,7 +23,7 @@ class Red4(RedBot):
             
             # If the bot gets the flag, return to base
             if self.has_flag:
-                self.turn_towards(Globals.red_flag.x, Globals.red_flag.y, Globals.FAST)
+                self.turn_towards(Globals.blue_flag.x, Globals.blue_flag.y, Globals.FAST)
                 self.drive_forward(Globals.FAST)
             else:
                 # If near the flag but doesn't have it, switch to retrying from a different angle

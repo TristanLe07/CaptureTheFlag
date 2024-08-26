@@ -5,22 +5,31 @@ import random
 class STATE(Enum):
     MOVE_UP = 1
     MOVE_DOWN = 2
+    MOVE_LEFT = 3
 
 class Red1(RedBot):
     def __init__(self, room, x, y):
         RedBot.__init__(self, room, x, y)
-        self.initial_wait = random.randint(30, 90)
-        self.wait_count = 0
+        self.curr_state = STATE.MOVE_LEFT
         
     def tick(self):
-        
-        if self.x == 702:
-            self.curr_state = STATE.MOVE_UP
-        else:
-            self.drive_forward(Globals.FAST)
-            print(self.x)
+        if self.curr_state == STATE.MOVE_LEFT:
+            if self.x == 702:
+                self.curr_state = STATE.MOVE_UP
+            else:
+                self.drive_forward(Globals.FAST)
             
-        
         if self.curr_state == STATE.MOVE_UP:
-            self.move_in_direction(180, 702)
-            self.drive_forward(Globals.FAST)
+            
+            if self.y <= 70:
+                self.curr_state = STATE.MOVE_DOWN
+            else:
+                self.turn_towards(702, 83, speed=Globals.FAST)
+                self.drive_forward(Globals.FAST)
+
+        if self.curr_state == STATE.MOVE_DOWN:
+            if self.y >= 610:
+                self.curr_state = STATE.MOVE_UP
+            else:
+                self.turn_towards(702, 720, speed=Globals.FAST)
+                self.drive_forward(Globals.FAST)

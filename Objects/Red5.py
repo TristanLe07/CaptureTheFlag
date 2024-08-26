@@ -24,6 +24,9 @@ class Red5(RedBot):
             self.curr_state = STATE.WAIT
 
     def wait(self):
+        self.turn_towards(Globals.blue_flag.x, Globals.blue_flag.y, Globals.FAST)
+        self.drive_forward(Globals.FAST)
+        
         bot, distance = self.closest_enemy_to_flag()
         if distance < 350:
             self.curr_state = STATE.ATTACK
