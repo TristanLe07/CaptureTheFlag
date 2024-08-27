@@ -15,7 +15,7 @@ class Red3(RedBot):
     def tick(self):
         if self.curr_state == STATE.ENTER_ENEMY_TERRITORY:
             if self.x > Globals.GAME_AREA_BORDER:
-                self.drive_forward(Globals.FAST)
+                self.drive_forward(speed=Globals.FAST)
             else:
                 for bot in Globals.blue_bots:
                     if self.point_to_point_distance(self.x, self.y, bot.x, bot.y) < 50:
@@ -25,12 +25,13 @@ class Red3(RedBot):
                         pass
                     
         elif self.curr_state == STATE.RETREAT_TO_SAFETY:
-            self.turn_towards(Globals.blue_flag.x, Globals.blue_flag.x, speed=Globals.FAST)
+            self.turn_towards(Globals.blue_flag.x, Globals.blue_flag.y, speed=Globals.FAST)
             self.drive_forward(Globals.FAST)
             
             if self.x == self.start_pos[0]:
                 self.curr_state = STATE.WAIT
-                self.set_timer(300, self.return_to_attack)
+                self.set_timer(100, self.return_to_attack)
+                self.turn_towards(Globals.red_flag.x, Globals.red_flag.x, speed=Globals.FAST)
 
     def return_to_attack(self):
         self.curr_state = STATE.ENTER_ENEMY_TERRITORY
