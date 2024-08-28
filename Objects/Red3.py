@@ -14,7 +14,8 @@ class Red3(RedBot):
 
     def tick(self):
         if self.curr_state == STATE.ENTER_ENEMY_TERRITORY:
-            if self.x > Globals.GAME_AREA_BORDER:
+            if self.x > 302:
+                self.turn_towards(Globals.red_flag.x, Globals.red_flag.x, speed=Globals.FAST)
                 self.drive_forward(speed=Globals.FAST)
             else:
                 for bot in Globals.blue_bots:
