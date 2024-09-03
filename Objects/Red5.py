@@ -42,11 +42,9 @@ class Red5(RedBot):
 
     def closest_enemy_to_flag(self):
         closest_bot = Globals.blue_bots[0]
-        shortest_distance = self.point_to_point_distance(closest_bot.x, closest_bot.y,
-                                                         Globals.blue_flag.x, Globals.blue_flag.y)
+        shortest_distance = self.point_to_point_distance(closest_bot.x, closest_bot.y, Globals.blue_flag.x, Globals.blue_flag.y)
         for curr_bot in Globals.blue_bots:
-            curr_bot_dist = self.point_to_point_distance(curr_bot.x, curr_bot.y,
-                                                         Globals.blue_flag.x, Globals.blue_flag.y)
+            curr_bot_dist = self.point_to_point_distance(curr_bot.x, curr_bot.y, Globals.blue_flag.x, Globals.blue_flag.y)
             if curr_bot_dist < shortest_distance:
                 shortest_distance = curr_bot_dist
                 closest_bot = curr_bot

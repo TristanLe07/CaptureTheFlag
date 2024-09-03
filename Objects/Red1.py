@@ -14,7 +14,7 @@ class Red1(RedBot):
         
     def tick(self):
         if self.curr_state == STATE.MOVE_LEFT:
-            if self.x == 702:
+            if self.x <= 760:
                 self.curr_state = STATE.MOVE_UP
             else:
                 self.drive_forward(Globals.FAST)
@@ -24,12 +24,12 @@ class Red1(RedBot):
             if self.y <= 70:
                 self.curr_state = STATE.MOVE_DOWN
             else:
-                self.turn_towards(702, 83, speed=Globals.FAST)
+                self.turn_towards(760, 83, speed=Globals.FAST)
                 self.drive_forward(Globals.FAST)
 
         if self.curr_state == STATE.MOVE_DOWN:
             if self.y >= 610:
                 self.curr_state = STATE.MOVE_UP
             else:
-                self.turn_towards(702, 720, speed=Globals.FAST)
+                self.turn_towards(760, 720, speed=Globals.FAST)
                 self.drive_forward(Globals.FAST)
